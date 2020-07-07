@@ -1,11 +1,11 @@
-import Logo from "./logo";
+import { AL } from "./logos";
 
 const Navbar = () => (
   <>
     <header className="navbar">
       <div className="navbar__centered">
         <a className="logo">
-          <Logo header />
+          <AL header />
         </a>
         <div className="navbar__centered__middle">
           <a className="navbar__centered__middle__browse">Browse</a>
@@ -19,7 +19,7 @@ const Navbar = () => (
     <style jsx>{`
       .navbar {
         background-color: #292b3f;
-        height: 4.8rem;
+        height: 4.6rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -35,7 +35,7 @@ const Navbar = () => (
 
       .navbar__centered {
         width: 68rem;
-        height: 4.8rem;
+        height: 4.6rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -46,7 +46,7 @@ const Navbar = () => (
       }
 
       .navbar__centered__middle {
-        height: 4.8rem;
+        height: 4.6rem;
         display: inline-flex;
         align-items: center;
         margin: 0 auto;
