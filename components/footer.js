@@ -5,10 +5,44 @@ const Footer = () => (
         <div className="footer__center__left">
           <h3> Site Theme </h3>
           <div className="footer__center__left__switches">
-            <div className="footer__center__left__switches__switch"> </div>
+            <div className="footer__center__left__switches__switch">
+              {" "}
+              <p>A</p>{" "}
+            </div>
+            <div className="footer__center__left__switches__switch">
+              {" "}
+              <p>A</p>{" "}
+            </div>
+            <div className="footer__center__left__switches__switch">
+              {" "}
+              <p>A</p>{" "}
+            </div>
           </div>
         </div>
-        <div className="footer__center__right"></div>
+        <div className="footer__center__right">
+          <div className="footer__center__right__column">
+            <a>AniList.co</a>
+            <a>AniChart.net</a>
+          </div>
+          <div className="footer__center__right__column">
+            <a>Apps</a>
+            <a>Site Stats</a>
+            <a>Recommendations</a>
+            <a>API</a>
+          </div>
+          <div className="footer__center__right__column">
+            <a>Discord</a>
+            <a>Twitter</a>
+            <a>Facebook</a>
+            <a>GitHub</a>
+          </div>
+          <div className="footer__center__right__column">
+            <a>Add Data</a>
+            <a>Contact</a>
+            <a>Terms & Privacy</a>
+            <a>Site Map</a>
+          </div>
+        </div>
       </div>
     </div>
     <style jsx>{`
@@ -26,20 +60,72 @@ const Footer = () => (
       }
 
       .footer__center__left {
-        background-color: green;
         height: 100%;
-        width: 50%;
+        width: 45%;
       }
 
       .footer__center__left h3 {
         margin-top: 2.5rem;
         margin-left: 1rem;
+        color: #3db4f2;
+      }
+
+      .footer__center__left__switches {
+        display: flex;
+        flex-direction: row;
+        margin-left: 1rem;
+      }
+
+      .footer__center__left__switches div:nth-of-type(1) {
+        color: #2e3c48;
+      }
+
+      .footer__center__left__switches div:nth-of-type(2) {
+        color: #a0b1c5;
+        background-color: #11161d;
+      }
+
+      .footer__center__left__switches__switch {
+        height: 1.7rem;
+        width: 1.7rem;
+        margin-right: 0.8rem;
+        background-color: white;
+        border-radius: 0.2rem;
+        border: 0.1rem solid #46546b;
+        cursor: pointer;
+      }
+
+      .footer__center__left__switches__switch p {
+        margin: 0.3rem 0 0 0.2rem;
+        font-size: 1.1rem;
+        font-weight: 400;
       }
 
       .footer__center__right {
-        background-color: black;
         height: 100%;
-        width: 50%;
+        width: 55%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
+      .footer__center__right__column {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding-top: 2.5rem;
+        padding-left: 1.8rem;
+      }
+
+      .footer__center__right__column a {
+        color: #8a99aa;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+
+      .footer__center__right__column a:hover {
+        color: #105f8a;
       }
     `}</style>
   </>
