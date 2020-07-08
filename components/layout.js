@@ -1,16 +1,20 @@
 import Head from "next/head";
 import Navbar from "./navbar";
+import Footer from "./footer";
 
 const Layout = ({ children }) => (
   <div className="root">
     <Head>
       <link
-        href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;400;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Overpass:wght@200;400;500;600;700;800&display=swap"
         rel="stylesheet"
       />
     </Head>
     <Navbar />
-    <main className="main-flex-container">{children}</main>
+    <main className="main-flex-container">
+      {children}
+      <Footer />
+    </main>
 
     <style jsx>{`
       .root {
@@ -23,6 +27,7 @@ const Layout = ({ children }) => (
       .main-flex-container {
         display: flex;
         flex: 1;
+        flex-direction: column;
         background-color: #d9dfe5;
       }
     `}</style>

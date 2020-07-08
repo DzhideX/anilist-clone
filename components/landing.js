@@ -29,7 +29,15 @@ const Landing = () => (
           description="Customize your scoring system, title format, color scheme, and much more! Also, we have a dark mode."
         />
       </div>
-      <button>Join Now</button>
+      <div className="landing__button">
+        <p>Join Now</p>
+        <div className="landing__button__circle">
+          <img
+            className="landing__button__circle__arrow"
+            src="/images/arrow.svg"
+          />
+        </div>
+      </div>
     </div>
     <style jsx>{`
       .landing {
@@ -64,10 +72,8 @@ const Landing = () => (
         justify-content: center;
       }
 
-      button {
-        position: relative;
+      .landing__button {
         font-family: Overpass;
-        align-items: center;
         background: #3577ff;
         border-radius: 1.875rem;
         box-shadow: 0 2px 40px rgba(0, 0, 0, 0.4);
@@ -76,15 +82,39 @@ const Landing = () => (
         margin-top: 4.3rem;
         transition: box-shadow 0.4s ease;
         border: none;
-        text-align: center;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 700;
         color: #f7fafc;
         cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
       }
 
-      button:hover {
+      .landing__button:hover {
         box-shadow: 0 2px 43px rgba(8, 150, 230, 0.6);
+      }
+
+      .landing__button p {
+        padding-top: 0.2rem;
+        margin-left: 2rem;
+        margin-right: 1rem;
+      }
+
+      .landing__button__circle {
+        background-color: #d9e6ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 2.3rem;
+        width: 2.3rem;
+        border-radius: 1.5rem;
+        padding-left: 0.2rem;
+      }
+
+      .landing__button__circle__arrow {
+        height: 1.25rem;
       }
     `}</style>
   </>

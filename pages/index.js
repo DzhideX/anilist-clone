@@ -1,16 +1,18 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import Landing from "../components/landing";
+import Filters from "../components/rootRoute/filters";
 
 export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Search Anime · Anilist</title>
+        <link rel="icon" href="/images/AnilistIcon.png" />
       </Head>
 
       <Landing />
+      <Filters />
 
       <style jsx>{`
         .title {
