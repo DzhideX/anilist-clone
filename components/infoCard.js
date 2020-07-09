@@ -1,43 +1,58 @@
 import GenreEllipse from "./genreEllipse";
 
-const InfoCard = () => (
+const toWord = (word) => {
+  let lowercase = word.toLowerCase();
+  lowercase[0] = lowercase[0].toUpperCase;
+  return lowercase;
+};
+
+const InfoCard = ({
+  rank,
+  image,
+  title,
+  genres,
+  score,
+  users,
+  type,
+  episodes,
+  releaseDate,
+  status,
+  color,
+  id,
+}) => (
   <>
     <div className="info-card">
       <div className="info-card__rank">
         <h2>
-          <span>#</span>1
+          <span>#</span>
+          {rank}
         </h2>
       </div>
       <div className="info-card__content">
         <div className="info-card__content__left">
-          <img
-            className="info-card__content__left__image"
-            src="/images/temp.jpg"
-          />
+          <img className="info-card__content__left__image" src={image} />
           <div className="info-card__content__left__section">
-            <h3>Hagane no Renkinjutsushi: Fullmetal Alchemist</h3>
+            <h3>{title}</h3>
             <div className="info-card__content__left__section__genre">
-              <GenreEllipse text="action" />
-              <GenreEllipse text="adventure" />
-              <GenreEllipse text="drama" />
-              <GenreEllipse text="fantasy" />
-              <GenreEllipse text="comedy" />
+              {genres.map((genre, i) => (
+                <GenreEllipse key={id + i} text={genre} color={color} />
+              ))}
             </div>
           </div>
         </div>
         <div className="info-card__content__right">
           <img src="/images/smiley.svg" />
           <div>
-            <h4>91%</h4>
-            <p>165398 users</p>
+            <h4>{score}%</h4>
+            <p>{users} users</p>
           </div>
           <div>
-            <h4>TV Show</h4>
-            <p>64episodes</p>
+            <h4>{type === "TV" ? `${type} Show` : type.toLowerCase()}</h4>
+            <p>{episodes} episodes</p>
           </div>
           <div>
-            <h4>Spring 2009</h4>
-            <p>Finished</p>
+            <h4>{releaseDate.toLowerCase()}</h4>
+            <p>{status.toLowerCase()}</p>
           </div>
         </div>
       </div>
@@ -49,7 +64,7 @@ const InfoCard = () => (
         height: 5rem;
         box-sizing: border-box;
         padding: 0 1.5rem 0 2.2rem;
-        margin-top: 0.5rem;
+        margin: 0.5rem 0 2rem 0;
       }
 
       .info-card__content {
@@ -122,11 +137,14 @@ const InfoCard = () => (
         margin: 0;
         font-size: 0.8rem;
         color: #647380;
+        font-weight: 600;
+        text-transform: capitalize;
       }
 
       .info-card__content__right h4 {
         margin: 0;
         color: #404e5c;
+        text-transform: capitalize;
       }
 
       .info-card__content__right div {
