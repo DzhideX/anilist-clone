@@ -41,8 +41,9 @@ const Filters = ({}) => {
           align-items: center;
           align-self: flex-end;
           margin-left: 4rem;
-          border-radius: 0.5rem;
+          border-radius: 0.4rem;
           cursor: pointer;
+          margin-right: 1.7rem;
         }
       `}</style>
     </>

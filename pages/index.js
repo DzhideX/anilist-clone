@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Layout from "../components/layout";
-import Landing from "../components/landing";
+import Landing from "../components/rootRoute/landing";
 import Filters from "../components/rootRoute/filters";
+import InfoCardList from "../components/rootRoute/infoCardList";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
 
       <Landing />
       <Filters />
+      <InfoCardList />
 
       <style jsx>{`
         .title {
