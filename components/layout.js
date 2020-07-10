@@ -28,7 +28,7 @@ const Layout = ({ children }) => (
         display: flex;
         flex: 1;
         flex-direction: column;
-        background-color: #d9dfe5;
+        background-color: #e1e5e9;
       }
     `}</style>
 

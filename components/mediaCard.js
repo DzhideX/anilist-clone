@@ -1,12 +1,7 @@
 import GenreEllipse from "./genreEllipse";
 
-const toWord = (word) => {
-  let lowercase = word.toLowerCase();
-  lowercase[0] = lowercase[0].toUpperCase;
-  return lowercase;
-};
-
-const InfoCard = ({
+const MediaCard = ({
+  typeOfCard,
   rank,
   image,
   title,
@@ -21,41 +16,54 @@ const InfoCard = ({
   id,
 }) => (
   <>
-    <div className="info-card">
-      <div className="info-card__rank">
-        <h2>
-          <span>#</span>
-          {rank}
-        </h2>
-      </div>
-      <div className="info-card__content">
-        <div className="info-card__content__left">
-          <img className="info-card__content__left__image" src={image} />
-          <div className="info-card__content__left__section">
-            <h3>{title}</h3>
-            <div className="info-card__content__left__section__genre">
-              {genres.map((genre, i) => (
-                <GenreEllipse key={id + i} text={genre} color={color} />
-              ))}
+    <div className={`${typeOfCard}-card`}>
+      {typeOfCard === "info" && (
+        <>
+          {" "}
+          <div className="info-card__rank">
+            <h2>
+              <span>#</span>
+              {rank}
+            </h2>
+          </div>
+          <div className="info-card__content">
+            <div className="info-card__content__left">
+              <img className="info-card__content__left__image" src={image} />
+              <div className="info-card__content__left__section">
+                <h3>{title}</h3>
+                <div className="info-card__content__left__section__genre">
+                  {genres.map((genre, i) => (
+                    <GenreEllipse key={id + i} text={genre} color={color} />
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="info-card__content__right">
+              <img src="/images/smiley.svg" />
+              <div>
+                <h4>{score}%</h4>
+                <p>{users} users</p>
+              </div>
+              <div>
+                <h4>{type === "TV" ? `${type} Show` : type.toLowerCase()}</h4>
+                <p>{episodes} episodes</p>
+              </div>
+              <div>
+                <h4>{releaseDate.toLowerCase()}</h4>
+                <p>{status.toLowerCase()}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="info-card__content__right">
-          <img src="/images/smiley.svg" />
+        </>
+      )}
+      {typeOfCard === "picture" && (
+        <>
+          <img src={image} />
           <div>
-            <h4>{score}%</h4>
-            <p>{users} users</p>
+            <p>{title}</p>
           </div>
-          <div>
-            <h4>{type === "TV" ? `${type} Show` : type.toLowerCase()}</h4>
-            <p>{episodes} episodes</p>
-          </div>
-          <div>
-            <h4>{releaseDate.toLowerCase()}</h4>
-            <p>{status.toLowerCase()}</p>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
     <style jsx>{`
       .info-card {
@@ -157,8 +165,32 @@ const InfoCard = ({
         margin-top: 1.5rem;
         margin-right: 0.3rem;
       }
+
+      .picture-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 21rem;
+        box-sizing: border-box;
+      }
+
+      .picture-card img {
+        height: 17.3rem;
+        border-radius: 0.2rem;
+      }
+
+      .picture-card div {
+        height: 3rem;
+        display: flex;
+        width: 12rem;
+      }
+
+      .picture-card p {
+        margin: 0.5rem 0 0 0;
+      }
     `}</style>
   </>
 );
 
-export default InfoCard;
+export default MediaCard;
