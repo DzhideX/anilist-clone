@@ -81,7 +81,7 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
       <style jsx>{`
         .media-card-list {
           width: 90rem;
-          margin: 0 auto 3rem auto;
+          margin: 0 auto 1rem auto;
         }
 
         .media-card-list__info {
@@ -98,7 +98,7 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
         .media-card-list__info h3 {
           margin: 0 0 0 2rem;
           cursor: pointer;
-          color: #404e5c;
+          color: #647380;
           font-size: 1.17rem;
         }
 

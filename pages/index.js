@@ -3,20 +3,20 @@ import Layout from "../components/layout";
 import Landing from "../components/rootRoute/landing";
 import Filters from "../components/rootRoute/filters";
 import MediaCardList from "../components/rootRoute/mediaCardList";
-import animeQuery from "../lib/animeQuery";
+import animeListQuery from "../lib/animeListQuery";
 
 export async function getServerSideProps() {
-  const topScore = await animeQuery(10, "sort: SCORE_DESC");
-  const mostPopular = await animeQuery(6, "sort: POPULARITY_DESC");
-  const mostPopularThisSeason = await animeQuery(
+  const topScore = await animeListQuery(10, "sort: SCORE_DESC");
+  const mostPopular = await animeListQuery(6, "sort: POPULARITY_DESC");
+  const mostPopularThisSeason = await animeListQuery(
     6,
     "sort: POPULARITY_DESC, season: SUMMER, seasonYear: 2020"
   );
-  const mostPopularNextSeason = await animeQuery(
+  const mostPopularNextSeason = await animeListQuery(
     6,
     "sort: POPULARITY_DESC, season: FALL, seasonYear: 2020"
   );
-  const trendingNow = await animeQuery(6, "sort: TRENDING_DESC");
+  const trendingNow = await animeListQuery(6, "sort: TRENDING_DESC");
   return {
     props: {
       topScore,
