@@ -1,12 +1,15 @@
 import { AL } from "./logos";
+import Link from "next/link";
 
 const Navbar = () => (
   <>
     <header className="navbar">
       <div className="navbar__centered">
-        <a className="logo">
-          <AL header />
-        </a>
+        <Link href="/">
+          <a className="logo">
+            <AL header />
+          </a>
+        </Link>
         <div className="navbar__centered__middle">
           <a className="navbar__centered__middle__browse">Browse</a>
           <a>Social</a>
@@ -23,6 +26,10 @@ const Navbar = () => (
         display: flex;
         align-items: center;
         justify-content: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 5;
       }
 
       a {
