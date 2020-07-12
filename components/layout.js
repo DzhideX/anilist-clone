@@ -3,7 +3,7 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import { useRef } from "react";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, backgroundColor }) => {
   const mainContainerRef = useRef();
 
   return (
@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
           display: flex;
           flex: 1;
           flex-direction: column;
-          background-color: #e1e5e9;
+          background-color: ${backgroundColor ? backgroundColor : "#e1e5e9"};
         }
       `}</style>
 

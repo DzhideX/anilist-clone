@@ -1,5 +1,6 @@
 import animeQuery from "../../lib/animeQuery";
 import Layout from "../../components/layout";
+import Sidebar from "../../components/anime/sidebar";
 
 export async function getServerSideProps({ query }) {
   const animeInfo = await animeQuery(query.id);
@@ -20,7 +21,7 @@ export async function getServerSideProps({ query }) {
 const AnimeInfoPage = ({ data }) => {
   return (
     <>
-      <Layout>
+      <Layout backgroundColor="#EDF1F5">
         <div className="anime">
           <div className="anime__header">
             {data.bannerImage && <div className="anime__header__banner"></div>}
@@ -75,11 +76,18 @@ const AnimeInfoPage = ({ data }) => {
               </div>
             </div>
           </div>
-          <br />
-          <br />
-          <p>{JSON.stringify(data)}</p>
-          <br />
-          <br />
+          <div className="anime__content">
+            <Sidebar
+              title={data.title}
+              format={data.format}
+              episodes={data.episodes}
+              status={data.status}
+              season={data.season}
+              seasonYear={data.seasonYear}
+              meanScore={data.meanScore}
+              popularity={data.popularity}
+            />
+          </div>
         </div>
       </Layout>
       <style jsx>{`
@@ -236,6 +244,16 @@ const AnimeInfoPage = ({ data }) => {
 
         .anime__header__info__middle__right__description__nav p:hover {
           color: rgb(61, 180, 242);
+        }
+
+        .anime__content {
+          display: grid;
+          grid-column-gap: 2.5rem;
+          grid-template-columns: 13.8rem auto;
+          margin: 1.8rem auto 0 auto;
+          position: relative;
+          width: 89rem;
+          max-width: 87rem;
         }
       `}</style>
     </>
