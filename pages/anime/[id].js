@@ -46,23 +46,40 @@ const AnimeInfoPage = ({ data }) => {
                   </div>
                 </div>
                 <div className="anime__header__info__middle__right">
-                  <h2>{data.title.romaji}</h2>
-                  <div
-                    className="anime__header__info__middle__right__description"
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        data.description.length <= 750
-                          ? data.description
-                          : data.description.substring(
-                              0,
-                              data.description.lastIndexOf(" ", 750)
-                            ) + "...",
-                    }}
-                  ></div>
+                  <div className="anime__header__info__middle__right__description">
+                    <div>
+                      <h2>{data.title.romaji}</h2>
+                      <div
+                        className="anime__header__info__middle__right__description__data"
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            data.description.length <= 750
+                              ? data.description
+                              : data.description.substring(
+                                  0,
+                                  data.description.lastIndexOf(" ", 750)
+                                ) + "...",
+                        }}
+                      ></div>
+                    </div>
+                    <div className="anime__header__info__middle__right__description__nav">
+                      <p>Overview</p>
+                      <p>Watch</p>
+                      <p>Characters</p>
+                      <p>Staff</p>
+                      <p>Stats</p>
+                      <p>Social</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <br />
+          <br />
+          <p>{JSON.stringify(data)}</p>
+          <br />
+          <br />
         </div>
       </Layout>
       <style jsx>{`
@@ -93,14 +110,13 @@ const AnimeInfoPage = ({ data }) => {
         }
 
         .anime__header__info {
-          height: 19rem;
           width: 100%;
           background-color: rgb(250, 250, 250);
         }
 
         .anime__header__info__middle {
           width: 69.5%;
-          height: 100%;
+          max-height: 100%;
           margin: 0 auto;
           display: grid;
           grid-template-columns: 1.7fr 9fr;
@@ -112,7 +128,6 @@ const AnimeInfoPage = ({ data }) => {
         }
 
         .anime__header__info__middle__left__image {
-          height: 19rem;
           width: 100%;
           margin-top: -7.8rem;
           border-radius: 0.2rem;
@@ -181,8 +196,46 @@ const AnimeInfoPage = ({ data }) => {
           padding-left: 2rem;
         }
 
+        .anime__header__info__middle__right h2 {
+          font-size: 1.2rem;
+          font-weight: 400;
+          color: rgb(92, 114, 138);
+        }
+
         .anime__header__info__middle__right__description {
-          max-width: 56.25rem;
+          padding-top: 1rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
+        }
+
+        .anime__header__info__middle__right__description__data {
+          max-width: 60rem;
+          color: rgb(122, 133, 143);
+          font-weight: 400;
+          font-size: 0.96rem;
+          line-height: 1.4;
+        }
+
+        .anime__header__info__middle__right__description__nav {
+          height: 3rem;
+          width: 100%;
+          max-width: 60rem;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
+
+        .anime__header__info__middle__right__description__nav p {
+          margin-right: 4.5rem;
+          font-weight: 400;
+          color: rgb(92, 114, 138);
+          cursor: pointer;
+        }
+
+        .anime__header__info__middle__right__description__nav p:hover {
+          color: rgb(61, 180, 242);
         }
       `}</style>
     </>

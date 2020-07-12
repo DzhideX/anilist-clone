@@ -67,7 +67,11 @@ const MediaCard = ({
           <>
             <img src={image} />
             <div>
-              <p>{title}</p>
+              <p>
+                {title.length <= 57
+                  ? title
+                  : title.substring(0, title.lastIndexOf(" ", 57)) + "..."}
+              </p>
             </div>
           </>
         )}
