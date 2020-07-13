@@ -1,6 +1,7 @@
 import animeQuery from "../../lib/animeQuery";
 import Layout from "../../components/layout";
 import Sidebar from "../../components/anime/sidebar";
+import Overview from "../../components/anime/overview";
 
 export async function getServerSideProps({ query }) {
   const animeInfo = await animeQuery(query.id);
@@ -39,7 +40,11 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
               data.bannerImage ? "" : "anime__header--no-banner"
             }`}
           >
-            {data.bannerImage && <div className="anime__header__banner"></div>}
+            {data.bannerImage && (
+              <div className="anime__header__banner">
+                <div className="anime__header__banner-shadow"></div>
+              </div>
+            )}
             <div className="anime__header__info">
               <div className="anime__header__info__middle">
                 <div className="anime__header__info__middle__left">
@@ -83,6 +88,7 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
                       <p>Watch</p>
                       <p>Characters</p>
                       <p>Staff</p>
+                      <p>Reviews</p>
                       <p>Stats</p>
                       <p>Social</p>
                     </div>
@@ -115,6 +121,7 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
               tags={data.tags}
               links={data.externalLinks}
             />
+            <Overview relations={data.relations.edges} />
           </div>
         </div>
       </Layout>
@@ -142,6 +149,16 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
           background-repeat: no-repeat;
           background-size: cover;
           margin-top: -3.75rem;
+        }
+
+        .anime__header__banner-shadow {
+          height: 100%;
+          width: 100%;
+          background: linear-gradient(
+            180deg,
+            rgba(6, 13, 34, 0) 40%,
+            rgba(6, 13, 34, 0.6)
+          );
         }
 
         .anime__header__banner img {
@@ -265,7 +282,7 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
         }
 
         .anime__header__info__middle__right__description__nav {
-          height: 3rem;
+          height: 2.5rem;
           width: 100%;
           max-width: 60rem;
           display: flex;
@@ -274,10 +291,12 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
         }
 
         .anime__header__info__middle__right__description__nav p {
-          margin-right: 4.5rem;
+          margin-right: 3.7rem;
           font-weight: 400;
           color: rgb(92, 114, 138);
           cursor: pointer;
+          font-size: 0.9rem;
+          font-smoothing: antialiased;
         }
 
         .anime__header__info__middle__right__description__nav p:hover {
@@ -288,7 +307,7 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
           display: grid;
           grid-column-gap: 2.5rem;
           grid-template-columns: 13.8rem auto;
-          margin: 1.8rem auto 0 auto;
+          margin: 2.8rem auto 0 auto;
           position: relative;
           width: 89rem;
           max-width: 87rem;

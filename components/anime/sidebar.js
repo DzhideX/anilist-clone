@@ -108,6 +108,7 @@ const Sidebar = ({
             {tags &&
               tags.map((tag) => (
                 <div
+                  key={tag.id}
                   className={`sidebar__tags__tag ${
                     tag.isMediaSpoiler && "spoiler-div"
                   }`}
@@ -130,7 +131,11 @@ const Sidebar = ({
           <div className="sidebar__links">
             <h3> External & Streaming links </h3>
             {links &&
-              links.map((link, i) => <a href={link.url}>{link.site}</a>)}
+              links.map((link, i) => (
+                <a key={link.id} href={link.url}>
+                  {link.site}
+                </a>
+              ))}
           </div>
         )}
       </div>
