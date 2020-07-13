@@ -5,7 +5,7 @@ const Navbar = () => (
   <>
     <header className="navbar">
       <div className="navbar__centered">
-        <Link href="/">
+        <Link href="/" scroll={false}>
           <a className="logo">
             <AL header />
           </a>

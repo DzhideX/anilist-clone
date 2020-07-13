@@ -5,25 +5,40 @@ import Sidebar from "../../components/anime/sidebar";
 export async function getServerSideProps({ query }) {
   const animeInfo = await animeQuery(query.id);
   let newDesc = "";
+  let studios = [];
+  let producers = [];
   animeInfo.data.Media.description.split("<br />").forEach((part, i) => {
     if (i % 2 === 0) {
       newDesc += `<p>${part}<p/>`;
     }
   });
   animeInfo.data.Media.description = newDesc;
+  animeInfo.data.Media.studios.edges.map((studio) => {
+    if (studio.node.isAnimationStudio) {
+      studios.push(studio.node.name);
+    } else {
+      producers.push(studio.node.name);
+    }
+  });
   return {
     props: {
       data: animeInfo.data.Media,
+      studios,
+      producers,
     },
   };
 }
 
-const AnimeInfoPage = ({ data }) => {
+const AnimeInfoPage = ({ data, studios, producers }) => {
   return (
     <>
       <Layout backgroundColor="#EDF1F5">
         <div className="anime">
-          <div className="anime__header">
+          <div
+            className={`anime__header ${
+              data.bannerImage ? "" : "anime__header--no-banner"
+            }`}
+          >
             {data.bannerImage && <div className="anime__header__banner"></div>}
             <div className="anime__header__info">
               <div className="anime__header__info__middle">
@@ -81,11 +96,24 @@ const AnimeInfoPage = ({ data }) => {
               title={data.title}
               format={data.format}
               episodes={data.episodes}
+              episodeDuration={data.duration}
               status={data.status}
+              startDate={data.startDate}
+              endDate={data.endDate}
               season={data.season}
               seasonYear={data.seasonYear}
+              averageScore={data.averageScore}
               meanScore={data.meanScore}
               popularity={data.popularity}
+              favourites={data.favourites}
+              source={data.source}
+              hashtag={data.hashtag}
+              genres={data.genres}
+              synonyms={data.synonyms}
+              studios={studios}
+              producers={producers}
+              tags={data.tags}
+              links={data.externalLinks}
             />
           </div>
         </div>
@@ -101,6 +129,10 @@ const AnimeInfoPage = ({ data }) => {
           width: 100%;
           display: flex;
           flex-direction: column;
+        }
+
+        .anime__header--no-banner {
+          margin-top: 4.6rem;
         }
 
         .anime__header__banner {
@@ -137,8 +169,12 @@ const AnimeInfoPage = ({ data }) => {
 
         .anime__header__info__middle__left__image {
           width: 100%;
-          margin-top: -7.8rem;
           border-radius: 0.2rem;
+          ${data.bannerImage
+            ? `margin-top: -7.8rem;`
+            : `
+            margin-top:1rem;
+          `}
         }
 
         .anime__header__info__middle__left__actions {
@@ -224,6 +260,8 @@ const AnimeInfoPage = ({ data }) => {
           font-weight: 400;
           font-size: 0.96rem;
           line-height: 1.4;
+          font-smoothing: antialiased;
+          letter-spacing: 0;
         }
 
         .anime__header__info__middle__right__description__nav {
