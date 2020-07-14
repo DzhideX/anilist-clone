@@ -15,13 +15,15 @@ const CharacterCard = ({
           <p id="info">{characterRole.toLowerCase()}</p>
         </div>
       </div>
-      <div className="character-card__right">
-        <div>
-          <p id="name">{staffName}</p>
-          <p id="info">{staffLanguage.toLowerCase()}</p>
+      {staffName && staffLanguage && staffImage && (
+        <div className="character-card__right">
+          <div>
+            <p id="name">{staffName}</p>
+            <p id="info">{staffLanguage.toLowerCase()}</p>
+          </div>
+          <img className="image-right" src={staffImage} />
         </div>
-        <img className="image-right" src={staffImage} />
-      </div>
+      )}
     </div>
     <style jsx>{`
       .character-card {
@@ -33,7 +35,7 @@ const CharacterCard = ({
 
       .character-card img {
         height: 5rem;
-        width: 3.87rem;
+        width: 3.6rem;
       }
 
       .image-left {
@@ -96,11 +98,11 @@ const CharacterCard = ({
   </React.Fragment>
 );
 
-const CharacterGrid = ({ characters }) => (
+const CharacterCardGrid = (props) => (
   <>
     <div className="character-grid">
-      {characters &&
-        characters.edges.map(
+      {props.characters &&
+        props.characters.edges.map(
           (character, i) =>
             i <= 5 && (
               <CharacterCard
@@ -114,6 +116,18 @@ const CharacterGrid = ({ characters }) => (
               />
             )
         )}
+      {props.staff &&
+        props.staff.map(
+          (person, i) =>
+            i <= 2 && (
+              <CharacterCard
+                key={person.id}
+                characterName={person.node.name.full}
+                characterRole={person.role}
+                characterImage={person.node.image.medium}
+              />
+            )
+        )}
     </div>
     <style jsx>{`
       .character-grid {
@@ -121,9 +135,10 @@ const CharacterGrid = ({ characters }) => (
         grid-column-gap: 1.8rem;
         grid-row-gap: 0.9rem;
         grid-template-columns: repeat(3, 1fr);
+        margin-bottom: 1rem;
       }
     `}</style>
   </>
 );
 
-export default CharacterGrid;
+export default CharacterCardGrid;

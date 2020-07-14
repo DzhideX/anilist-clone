@@ -124,6 +124,8 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
             <Overview
               relations={data.relations.edges}
               characters={data.characters}
+              staff={data.staff.edges}
+              stats={data.stats}
             />
           </div>
         </div>
