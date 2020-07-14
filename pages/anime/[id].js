@@ -121,7 +121,10 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
               tags={data.tags}
               links={data.externalLinks}
             />
-            <Overview relations={data.relations.edges} />
+            <Overview
+              relations={data.relations.edges}
+              characters={data.characters}
+            />
           </div>
         </div>
       </Layout>

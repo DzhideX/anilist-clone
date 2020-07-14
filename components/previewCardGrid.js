@@ -45,6 +45,7 @@ const PreviewCardGrid = ({ relations }) => (
       {relations &&
         relations.map((relation) => (
           <PreviewCard
+            key={relation.id}
             image={relation.node.coverImage.medium}
             title={relation.relationType}
           />
@@ -54,7 +55,7 @@ const PreviewCardGrid = ({ relations }) => (
       .preview-card-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, 5.3rem);
-        margin-top: 0.4rem;
+        margin: 0.4rem 0 1.3rem 0;
         grid-gap: 1rem 1.65rem;
       }
     `}</style>
