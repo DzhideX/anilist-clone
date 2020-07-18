@@ -3,6 +3,7 @@ import CharacterCardGrid from "../characterCardGrid";
 import DataDistribution from "./dataDistribution";
 import ScoreDistribution from "./scoreDistribution";
 import Recommendations from "./recommendations";
+import CommunityReviewsAndThreads from "./communityReviewsAndThreads";
 
 const Overview = ({
   relations,
@@ -11,6 +12,8 @@ const Overview = ({
   stats,
   streamingEpisodes,
   recommendations,
+  trailer,
+  reviews,
 }) => (
   <>
     <div className="overview">
@@ -41,6 +44,7 @@ const Overview = ({
                 (episode, i) =>
                   i < 4 && (
                     <div
+                      key={episode.title}
                       onClick={() => window.open(episode.url, "_blank")}
                       className="overview__streaming-episodes__container"
                       style={{
@@ -56,7 +60,17 @@ const Overview = ({
           </div>
         </React.Fragment>
       )}
+      {trailer && (
+        <React.Fragment>
+          <h2>Trailer</h2>
+          <iframe
+            className="overview__trailer"
+            src={`https://www.${trailer.site}.com/embed/${trailer.id}`}
+          ></iframe>
+        </React.Fragment>
+      )}
       <Recommendations recommendations={recommendations.edges} />
+      <CommunityReviewsAndThreads reviews={reviews} />
     </div>
     <style jsx>{`
       .overview {
@@ -87,6 +101,7 @@ const Overview = ({
           ? "1fr 1fr 1fr"
           : "1fr 1fr 1fr 1fr"};
         grid-column-gap: 2rem;
+        margin-bottom: 1rem;
       }
 
       .overview__streaming-episodes__container {
@@ -113,6 +128,13 @@ const Overview = ({
         color: rgba(237, 241, 245, 0.91);
         font-weight: 400;
         font-size: 0.85rem;
+      }
+
+      .overview__trailer {
+        height: 14.4rem;
+        width: 32.6rem;
+        border: none;
+        border-radius: 0.2rem;
       }
     `}</style>
   </>

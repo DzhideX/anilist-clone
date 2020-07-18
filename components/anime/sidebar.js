@@ -43,10 +43,16 @@ const Sidebar = ({
           <p>{format}</p>
           <h4>Episodes</h4>
           <p>{episodes}</p>
-          <h4>Episode Duration</h4>
-          <p>{episodeDuration} minutes</p>
+          {episodeDuration && (
+            <React.Fragment>
+              <h4>Episode Duration</h4>
+              <p>{episodeDuration} minutes</p>
+            </React.Fragment>
+          )}
           <h4>Status</h4>
-          <p className="capitalize">{status.toLowerCase()}</p>
+          <p className="capitalize">
+            {status.split("_").join(" ").toLowerCase()}
+          </p>
           <h4>Start Date</h4>
           <p>
             {new Date(startDate.year, startDate.month - 1, startDate.day)

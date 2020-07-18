@@ -6,7 +6,6 @@ const Recommendations = ({ recommendations }) => {
   return (
     <>
       <div className="recommendations">
-        {console.log(recommendations)}
         <div className="recommendations__info">
           <h2 className="recommendations__info__title">Recommendations</h2>
           <p
