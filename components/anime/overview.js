@@ -2,6 +2,7 @@ import PreviewCardGrid from "../previewCardGrid";
 import CharacterCardGrid from "../characterCardGrid";
 import DataDistribution from "./dataDistribution";
 import ScoreDistribution from "./scoreDistribution";
+import Recommendations from "./recommendations";
 
 const Overview = ({
   relations,
@@ -9,6 +10,7 @@ const Overview = ({
   staff,
   stats,
   streamingEpisodes,
+  recommendations,
 }) => (
   <>
     <div className="overview">
@@ -54,6 +56,7 @@ const Overview = ({
           </div>
         </React.Fragment>
       )}
+      <Recommendations recommendations={recommendations.edges} />
     </div>
     <style jsx>{`
       .overview {

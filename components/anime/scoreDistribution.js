@@ -16,7 +16,7 @@ const ScoreDistribution = ({ distribution }) => {
       >
         {distribution &&
           distribution.map((stat) => (
-            <div className="score-distribution__score">
+            <div key={stat.score} className="score-distribution__score">
               <div
                 style={{ visibility: isHovered ? "visible" : "hidden" }}
                 className="score-distribution__score__upper-text"

@@ -67,6 +67,7 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
               staff={data.staff.edges}
               stats={data.stats}
               streamingEpisodes={data.streamingEpisodes}
+              recommendations={data.recommendations}
             />
           </div>
         </div>
