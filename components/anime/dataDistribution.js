@@ -14,7 +14,7 @@ const DataDistribution = ({ distribution }) => {
             <p>
               <span className="completed">
                 {distribution &&
-                  distribution.array.filter(
+                  distribution.filter(
                     (stat, i) => stat.status === "COMPLETED"
                   )[0].amount + " "}
               </span>
@@ -28,7 +28,7 @@ const DataDistribution = ({ distribution }) => {
             <p>
               <span className="planning">
                 {distribution &&
-                  distribution.array.filter(
+                  distribution.filter(
                     (stat, i) => stat.status === "PLANNING"
                   )[0].amount + " "}
               </span>
@@ -42,9 +42,8 @@ const DataDistribution = ({ distribution }) => {
             <p>
               <span className="current">
                 {distribution &&
-                  distribution.array.filter(
-                    (stat, i) => stat.status === "CURRENT"
-                  )[0].amount + " "}
+                  distribution.filter((stat, i) => stat.status === "CURRENT")[0]
+                    .amount + " "}
               </span>
               Users
             </p>
@@ -57,7 +56,7 @@ const DataDistribution = ({ distribution }) => {
               <span>
                 {distribution && (
                   <span className="paused">
-                    {distribution.array.filter(
+                    {distribution.filter(
                       (stat, i) => stat.status === "PAUSED"
                     )[0].amount + " "}
                   </span>
@@ -73,9 +72,8 @@ const DataDistribution = ({ distribution }) => {
             <p>
               <span className="dropped">
                 {distribution &&
-                  distribution.array.filter(
-                    (stat, i) => stat.status === "DROPPED"
-                  )[0].amount + " "}
+                  distribution.filter((stat, i) => stat.status === "DROPPED")[0]
+                    .amount + " "}
               </span>
               users
             </p>
@@ -91,7 +89,7 @@ const DataDistribution = ({ distribution }) => {
       </div>
       <style jsx>{`
         .data-distribution {
-          height: 6rem;
+          height: 6.7rem;
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -187,50 +185,50 @@ const DataDistribution = ({ distribution }) => {
         }
 
         .data-distribution__line__completed {
-          width: ${(distribution.array.filter(
+          width: ${(distribution.filter(
             (stat, i) => stat.status === "COMPLETED"
           )[0].amount /
-            distribution.array.reduce((sum, item) => sum + item.amount, 0)) *
+            distribution.reduce((sum, item) => sum + item.amount, 0)) *
           100}%;
           height: 100%;
           background-color: rgb(104, 214, 57);
         }
 
         .data-distribution__line__planning {
-          width: ${(distribution.array.filter(
+          width: ${(distribution.filter(
             (stat, i) => stat.status === "PLANNING"
           )[0].amount /
-            distribution.array.reduce((sum, item) => sum + item.amount, 0)) *
+            distribution.reduce((sum, item) => sum + item.amount, 0)) *
           100}%;
           height: 100%;
           background-color: rgb(2, 169, 255);
         }
 
         .data-distribution__line__current {
-          width: ${(distribution.array.filter(
+          width: ${(distribution.filter(
             (stat, i) => stat.status === "CURRENT"
           )[0].amount /
-            distribution.array.reduce((sum, item) => sum + item.amount, 0)) *
+            distribution.reduce((sum, item) => sum + item.amount, 0)) *
           100}%;
           height: 100%;
           background-color: rgb(146, 86, 243);
         }
 
         .data-distribution__line__paused {
-          width: ${(distribution.array.filter(
+          width: ${(distribution.filter(
             (stat, i) => stat.status === "PAUSED"
           )[0].amount /
-            distribution.array.reduce((sum, item) => sum + item.amount, 0)) *
+            distribution.reduce((sum, item) => sum + item.amount, 0)) *
           100}%;
           height: 100%;
           background-color: rgb(247, 121, 164);
         }
 
         .data-distribution__line__dropped {
-          width: ${(distribution.array.filter(
+          width: ${(distribution.filter(
             (stat, i) => stat.status === "DROPPED"
           )[0].amount /
-            distribution.array.reduce((sum, item) => sum + item.amount, 0)) *
+            distribution.reduce((sum, item) => sum + item.amount, 0)) *
           100}%;
           height: 100%;
           background-color: rgb(232, 93, 117);

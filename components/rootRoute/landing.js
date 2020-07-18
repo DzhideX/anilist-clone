@@ -44,7 +44,7 @@ const Landing = () => (
         width: 72.5rem;
         height: 42rem;
         background-color: #091523;
-        margin: 3rem auto;
+        margin: 7.5rem auto 3rem;
         border-radius: 1rem;
         display: flex;
         flex-direction: column;

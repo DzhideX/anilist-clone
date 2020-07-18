@@ -85,7 +85,6 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
         }
 
         .media-card-list__info {
-          height: 100%;
           display: flex;
           justify-content: space-between;
           align-items: center;
