@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+const calculateWidth = (array, status) =>
+  (array.filter((stat, i) => stat.status === status)[0].amount /
+    array.reduce((sum, item) => sum + item.amount, 0)) *
+  100;
 
 const DataDistribution = ({ distribution }) => {
-  const [totalAmountData, setTotalAmountData] = useState(0);
-
   return (
     <>
       <div className="data-distribution">
@@ -80,11 +81,36 @@ const DataDistribution = ({ distribution }) => {
           </div>
         </div>
         <div className="data-distribution__line">
-          <div className="data-distribution__line__completed"></div>
-          <div className="data-distribution__line__planning"></div>
-          <div className="data-distribution__line__current"></div>
-          <div className="data-distribution__line__paused"></div>
-          <div className="data-distribution__line__dropped"></div>
+          <div
+            style={{
+              width: `${calculateWidth(distribution, "COMPLETED")}%`,
+            }}
+            className="data-distribution__line__completed"
+          ></div>
+          <div
+            style={{
+              width: `${calculateWidth(distribution, "PLANNING")}%`,
+            }}
+            className="data-distribution__line__planning"
+          ></div>
+          <div
+            style={{
+              width: `${calculateWidth(distribution, "CURRENT")}%`,
+            }}
+            className="data-distribution__line__current"
+          ></div>
+          <div
+            style={{
+              width: `${calculateWidth(distribution, "PAUSED")}%`,
+            }}
+            className="data-distribution__line__paused"
+          ></div>
+          <div
+            style={{
+              width: `${calculateWidth(distribution, "DROPPED")}%`,
+            }}
+            className="data-distribution__line__dropped"
+          ></div>
         </div>
       </div>
       <style jsx>{`
@@ -94,6 +120,7 @@ const DataDistribution = ({ distribution }) => {
           flex-direction: column;
           justify-content: flex-end;
           background-color: rgb(250, 250, 250);
+          margin-bottom: 1rem;
         }
 
         .data-distribution__text {
@@ -185,51 +212,26 @@ const DataDistribution = ({ distribution }) => {
         }
 
         .data-distribution__line__completed {
-          width: ${(distribution.filter(
-            (stat, i) => stat.status === "COMPLETED"
-          )[0].amount /
-            distribution.reduce((sum, item) => sum + item.amount, 0)) *
-          100}%;
           height: 100%;
           background-color: rgb(104, 214, 57);
         }
 
         .data-distribution__line__planning {
-          width: ${(distribution.filter(
-            (stat, i) => stat.status === "PLANNING"
-          )[0].amount /
-            distribution.reduce((sum, item) => sum + item.amount, 0)) *
-          100}%;
           height: 100%;
           background-color: rgb(2, 169, 255);
         }
 
         .data-distribution__line__current {
-          width: ${(distribution.filter(
-            (stat, i) => stat.status === "CURRENT"
-          )[0].amount /
-            distribution.reduce((sum, item) => sum + item.amount, 0)) *
-          100}%;
           height: 100%;
           background-color: rgb(146, 86, 243);
         }
 
         .data-distribution__line__paused {
-          width: ${(distribution.filter(
-            (stat, i) => stat.status === "PAUSED"
-          )[0].amount /
-            distribution.reduce((sum, item) => sum + item.amount, 0)) *
-          100}%;
           height: 100%;
           background-color: rgb(247, 121, 164);
         }
 
         .data-distribution__line__dropped {
-          width: ${(distribution.filter(
-            (stat, i) => stat.status === "DROPPED"
-          )[0].amount /
-            distribution.reduce((sum, item) => sum + item.amount, 0)) *
-          100}%;
           height: 100%;
           background-color: rgb(232, 93, 117);
         }

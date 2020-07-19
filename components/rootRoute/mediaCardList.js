@@ -1,6 +1,8 @@
 import MediaCard from "../mediaCard";
+import useWindowDimensions from "../../lib/useWindowDimensions";
 
 const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
+  const { height, width } = useWindowDimensions();
   return (
     <>
       <div className="media-card-list">
@@ -24,24 +26,66 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
                   id,
                 },
                 i
-              ) => (
-                <MediaCard
-                  typeOfCard={typeOfCard}
-                  image={coverImage.large}
-                  title={title.romaji}
-                  genres={genres}
-                  score={meanScore}
-                  type={format}
-                  episodes={episodes}
-                  releaseDate={season + ` ${seasonYear}`}
-                  color={coverImage.color}
-                  key={id}
-                  id={id}
-                />
-              )
+              ) =>
+                i < (width > 1500 ? 6 : width > 950 ? 5 : 4) && (
+                  <MediaCard
+                    typeOfCard={typeOfCard}
+                    image={coverImage.large}
+                    title={title.romaji}
+                    genres={genres}
+                    score={meanScore}
+                    type={format}
+                    episodes={episodes}
+                    releaseDate={season + ` ${seasonYear}`}
+                    color={coverImage.color}
+                    key={id}
+                    id={id}
+                  />
+                )
             )}
         </div>
-        {typeOfCard === "info" &&
+        {width < 950 ? (
+          <div className="media-card-list__picture">
+            {typeOfCard === "info" &&
+              data.map(
+                (
+                  {
+                    coverImage,
+                    title,
+                    genres,
+                    meanScore,
+                    popularity,
+                    format,
+                    episodes,
+                    season,
+                    seasonYear,
+                    status,
+                    id,
+                  },
+                  i
+                ) =>
+                  i < 4 && (
+                    <MediaCard
+                      typeOfCard="picture"
+                      rank={i + 1}
+                      image={coverImage.large}
+                      title={title.romaji}
+                      genres={genres}
+                      score={meanScore}
+                      users={popularity}
+                      type={format}
+                      episodes={episodes}
+                      releaseDate={season + ` ${seasonYear}`}
+                      status={status}
+                      color={coverImage.color}
+                      key={id}
+                      id={id}
+                    />
+                  )
+              )}
+          </div>
+        ) : (
+          typeOfCard === "info" &&
           data.map(
             (
               {
@@ -76,7 +120,8 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
                 id={id}
               />
             )
-          )}
+          )
+        )}
       </div>
       <style jsx>{`
         .media-card-list {
@@ -116,6 +161,34 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
           grid-template-columns: repeat(auto-fill, 185px);
           justify-content: space-between;
           padding: 0 1.5rem 0 2rem;
+        }
+
+        @media screen and (max-width: 1500px) {
+          .media-card-list {
+            width: 75rem;
+            margin: 0 auto 1rem auto;
+          }
+        }
+
+        @media screen and (max-width: 1160px) {
+          .media-card-list {
+            width: 61.5rem;
+            margin: 0 auto 1rem auto;
+          }
+          .media-card-list__picture {
+            grid-gap: 0 3rem;
+            grid-template-columns: repeat(auto-fill, 185px);
+          }
+        }
+
+        @media screen and (max-width: 950px) {
+          .media-card-list {
+            width: 51.5rem;
+            margin: 0 auto 1rem auto;
+          }
+          .media-card-list__picture {
+            grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+          }
         }
       `}</style>
     </>

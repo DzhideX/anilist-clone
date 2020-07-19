@@ -17,17 +17,33 @@ const Overview = ({
 }) => (
   <>
     <div className="overview">
-      <h2>Relations</h2>
-      <PreviewCardGrid relations={relations} />
-      <h2> Characters </h2>
-      <CharacterCardGrid characters={characters} />
-      <h2>Staff</h2>
-      <CharacterCardGrid staff={staff} />
+      {relations && (
+        <React.Fragment>
+          <h2>Relations</h2>
+          <PreviewCardGrid relations={relations} />
+        </React.Fragment>
+      )}
+      {characters && (
+        <React.Fragment>
+          <h2> Characters </h2>
+          <CharacterCardGrid characters={characters} />
+        </React.Fragment>
+      )}
+      {staff && (
+        <React.Fragment>
+          <h2>Staff</h2>
+          <CharacterCardGrid staff={staff} />
+        </React.Fragment>
+      )}
       <div className="overview__data-distribution">
-        <div>
-          <h2>Status Distribution</h2>
-          <DataDistribution distribution={stats.statusDistribution} />
-        </div>
+        {stats.statusDistribution && (
+          <React.Fragment>
+            <div>
+              <h2>Status Distribution</h2>
+              <DataDistribution distribution={stats.statusDistribution} />
+            </div>
+          </React.Fragment>
+        )}
         {stats.scoreDistribution && stats.scoreDistribution.length === 10 && (
           <div>
             <h2>Score Distribution</h2>
@@ -35,7 +51,7 @@ const Overview = ({
           </div>
         )}
       </div>
-      {streamingEpisodes && (
+      {streamingEpisodes && streamingEpisodes.length !== 0 && (
         <React.Fragment>
           <h2>Watch</h2>
           <div className="overview__streaming-episodes">
@@ -52,7 +68,14 @@ const Overview = ({
                       }}
                     >
                       <div>
-                        <p>{episode.title}</p>
+                        <p>
+                          {episode.title.length <= 35
+                            ? episode.title
+                            : episode.title.substring(
+                                0,
+                                episode.title.lastIndexOf(" ", 35)
+                              ) + "..."}
+                        </p>
                       </div>
                     </div>
                   )
@@ -69,8 +92,10 @@ const Overview = ({
           ></iframe>
         </React.Fragment>
       )}
-      <Recommendations recommendations={recommendations.edges} />
-      <CommunityReviewsAndThreads reviews={reviews} />
+      {recommendations.edges && recommendations.edges.length !== 0 && (
+        <Recommendations recommendations={recommendations.edges} />
+      )}
+      {reviews.length !== 0 && <CommunityReviewsAndThreads reviews={reviews} />}
     </div>
     <style jsx>{`
       .overview {

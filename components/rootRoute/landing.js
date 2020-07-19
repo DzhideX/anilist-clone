@@ -116,6 +116,41 @@ const Landing = () => (
       .landing__button__circle__arrow {
         height: 1.25rem;
       }
+
+      @media screen and (max-width: 1160px) {
+        .landing {
+          width: 100%;
+          margin: 0;
+          border-radius: 0;
+        }
+
+        .landing__feature-cards {
+          grid-gap: 2rem 2rem;
+        }
+        .landing__button {
+          height: 2rem;
+          width: 11rem;
+          margin-top: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        .landing__button__circle {
+          height: 2rem;
+          width: 2rem;
+          margin-right: 0.5rem;
+        }
+      }
+
+      @media screen and (max-width: 900px) {
+        .landing {
+          height: 100%;
+        }
+
+        .landing__feature-cards {
+          display: flex;
+          flex-direction: column;
+        }
+      }
     `}</style>
   </>
 );

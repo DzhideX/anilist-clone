@@ -16,7 +16,9 @@ const Recommendations = ({ recommendations }) => {
             }
             className="recommendations__info__trigger"
           >
-            {seeRecommendations === 6
+            {recommendations.length < 7
+              ? ""
+              : seeRecommendations === 6
               ? `View all ${recommendations.length} recommendations`
               : "View Less"}
           </p>
@@ -86,6 +88,7 @@ const Recommendations = ({ recommendations }) => {
           height: 11.8rem;
           border-radius: 0.2rem;
           background-size: cover;
+          cursor: pointer;
         }
 
         .recommendations__info__pictures__title {

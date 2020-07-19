@@ -75,6 +75,27 @@ const Filter = ({ title, search }) => (
       input:focus {
         outline: none;
       }
+
+      @media screen and (max-width: 1500px) {
+        .filter {
+          ${title === "Airing Status" ? "display:none" : ""}
+        }
+      }
+
+      @media screen and (max-width: 1160px) {
+        .filter {
+          width: 100%;
+          ${search ? "" : "display:none"}
+        }
+
+        .filter__bottom {
+          width: 100%;
+        }
+
+        .filter__bottom__input {
+          width: 100%;
+        }
+      }
     `}</style>
   </>
 );

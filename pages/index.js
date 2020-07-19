@@ -6,7 +6,7 @@ import MediaCardList from "../components/rootRoute/mediaCardList";
 import animeListQuery from "../lib/animeListQuery";
 
 export async function getServerSideProps() {
-  const topScore = await animeListQuery(10, "sort: SCORE_DESC");
+  const topScore = await animeListQuery(10, "sort: SCORE_DESC"); // moze bit jedan query
   const mostPopular = await animeListQuery(6, "sort: POPULARITY_DESC");
   const mostPopularThisSeason = await animeListQuery(
     6,

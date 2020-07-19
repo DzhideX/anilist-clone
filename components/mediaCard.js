@@ -68,9 +68,9 @@ const MediaCard = ({
             <img src={image} />
             <div>
               <p>
-                {title.length <= 57
+                {title.length <= 40
                   ? title
-                  : title.substring(0, title.lastIndexOf(" ", 57)) + "..."}
+                  : title.substring(0, title.lastIndexOf(" ", 40)) + "..."}
               </p>
             </div>
           </>
@@ -187,6 +187,7 @@ const MediaCard = ({
           height: 21rem;
           box-sizing: border-box;
           animation: in-data 0.3s linear;
+          cursor: pointer;
         }
 
         .picture-card img {
@@ -199,12 +200,12 @@ const MediaCard = ({
           height: 2.5rem;
           display: flex;
           width: 12rem;
+          color: #748899;
         }
 
         .picture-card p {
           margin: 0.7rem 0 0 0;
           font-size: 0.9rem;
-          color: #748899;
         }
 
         @keyframes in-data {
@@ -217,6 +218,21 @@ const MediaCard = ({
           }
           100% {
             transform: none;
+          }
+        }
+
+        @media screen and (max-width: 950px) {
+          .picture-card img {
+            height: 70%;
+            width: 100%;
+            border-radius: 0.2rem;
+          }
+
+          .picture-card div {
+            height: 2.5rem;
+            display: flex;
+            width: 100%;
+            color: #748899;
           }
         }
       `}</style>

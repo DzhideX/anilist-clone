@@ -35,7 +35,7 @@ const Filters = ({}) => {
         .filters__settings {
           background-color: white;
           height: 2.5rem;
-          width: 2.5rem;
+          min-width: 2.5rem;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -44,6 +44,25 @@ const Filters = ({}) => {
           border-radius: 0.4rem;
           cursor: pointer;
           margin-right: 1.7rem;
+        }
+
+        @media screen and (max-width: 1500px) {
+          .filters {
+            width: 75rem;
+          }
+        }
+
+        @media screen and (max-width: 1160px) {
+          .filters {
+            width: 61.5rem;
+            margin-top: 2rem;
+          }
+        }
+
+        @media screen and (max-width: 950px) {
+          .filters {
+            width: 51.5rem;
+          }
         }
       `}</style>
     </>

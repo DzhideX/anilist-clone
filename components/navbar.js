@@ -94,6 +94,12 @@ const Navbar = () => (
         transform: scale(1.03);
         box-shadow: 0 2px 10px rgba(8, 150, 230, 0.6);
       }
+
+      @media screen and (max-width: 1160px) {
+        .navbar {
+          display: none;
+        }
+      }
     `}</style>
   </>
 );

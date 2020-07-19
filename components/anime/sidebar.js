@@ -39,68 +39,136 @@ const Sidebar = ({
           <p>#1 Most Popular All Time</p>
         </div>
         <div className="sidebar__data">
-          <h4>Format</h4>
-          <p>{format}</p>
-          <h4>Episodes</h4>
-          <p>{episodes}</p>
+          {format && (
+            <React.Fragment>
+              <h4>Format</h4>
+              <p>{format}</p>
+            </React.Fragment>
+          )}
+          {episodes && (
+            <React.Fragment>
+              <h4>Episodes</h4>
+              <p>{episodes}</p>
+            </React.Fragment>
+          )}
           {episodeDuration && (
             <React.Fragment>
               <h4>Episode Duration</h4>
               <p>{episodeDuration} minutes</p>
             </React.Fragment>
           )}
-          <h4>Status</h4>
-          <p className="capitalize">
-            {status.split("_").join(" ").toLowerCase()}
-          </p>
-          <h4>Start Date</h4>
-          <p>
-            {new Date(startDate.year, startDate.month - 1, startDate.day)
-              .toDateString()
-              .split(" ")
-              .map((num, i) => (i === 0 ? "" : i === 2 ? `${num},` : num))
-              .join(" ")}
-          </p>
-          <h4>End Date</h4>
-          <p>
-            {new Date(endDate.year, endDate.month - 1, endDate.day)
-              .toDateString()
-              .split(" ")
-              .map((num, i) => (i === 0 ? "" : i === 2 ? `${num},` : num))
-              .join(" ")}
-          </p>
-          <h4>Season</h4>
-          <p className="capitalize">
-            {season.toLowerCase() + " " + seasonYear}
-          </p>
-          <h4>Average Score</h4>
-          <p>{averageScore}%</p>
-          <h4>Mean Score</h4>
-          <p>{meanScore}%</p>
-          <h4>Popularity</h4>
-          <p>{popularity}</p>
-          <h4>Favorites</h4>
-          <p>{favourites}</p>
-          <h4>Studios</h4>
-          <p>{studios.join(", ")}</p>
-          <h4>Producers</h4>
-          <p>{producers.join(", ")}</p>
-          <h4>Source</h4>
-          <p>{source}</p>
+          {status && (
+            <React.Fragment>
+              <h4>Status</h4>
+              <p className="capitalize">
+                {status.split("_").join(" ").toLowerCase()}
+              </p>
+            </React.Fragment>
+          )}
+          {startDate.year && startDate.month && startDate.day && (
+            <React.Fragment>
+              <h4>Start Date</h4>
+              <p>
+                {new Date(startDate.year, startDate.month - 1, startDate.day)
+                  .toDateString()
+                  .split(" ")
+                  .map((num, i) => (i === 0 ? "" : i === 2 ? `${num},` : num))
+                  .join(" ")}
+              </p>
+            </React.Fragment>
+          )}
+          {endDate.year && endDate.month && endDate.day && (
+            <React.Fragment>
+              <h4>End Date</h4>
+              <p>
+                {new Date(endDate.year, endDate.month - 1, endDate.day)
+                  .toDateString()
+                  .split(" ")
+                  .map((num, i) => (i === 0 ? "" : i === 2 ? `${num},` : num))
+                  .join(" ")}
+              </p>
+            </React.Fragment>
+          )}
+          {season && (
+            <React.Fragment>
+              <h4>Season</h4>
+              <p className="capitalize">
+                {season.toLowerCase() + " " + seasonYear}
+              </p>
+            </React.Fragment>
+          )}
+          {averageScore && (
+            <React.Fragment>
+              <h4>Average Score</h4>
+              <p>{averageScore}%</p>
+            </React.Fragment>
+          )}
+          {meanScore && (
+            <React.Fragment>
+              <h4>Mean Score</h4>
+              <p>{meanScore}%</p>
+            </React.Fragment>
+          )}
+          {popularity && (
+            <React.Fragment>
+              <h4>Popularity</h4>
+              <p>{popularity}</p>
+            </React.Fragment>
+          )}
+          {favourites && (
+            <React.Fragment>
+              <h4>Favorites</h4>
+              <p>{favourites}</p>
+            </React.Fragment>
+          )}
+          {studios && (
+            <React.Fragment>
+              <h4>Studios</h4>
+              <p>{studios.join(", ")}</p>
+            </React.Fragment>
+          )}
+          {producers && (
+            <React.Fragment>
+              <h4>Producers</h4>
+              <p>{producers.join(", ")}</p>
+            </React.Fragment>
+          )}
+          {source && (
+            <React.Fragment>
+              <h4>Source</h4>
+              <p>{source}</p>
+            </React.Fragment>
+          )}
           {hashtag && (
             <React.Fragment>
               <h4>Hashtag</h4>
               <p>{hashtag}</p>
             </React.Fragment>
           )}
-          <h4>Genres</h4>
-          <p>{genres.join(", ")}</p>
-          <h4>Romaji</h4>
-          <p>{title.romaji}</p>
-          <h4>English</h4>
-          <p>{title.english}</p>
-          <h4>Native</h4>
-          <p>{title.native}</p>
+          {genres && (
+            <React.Fragment>
+              <h4>Genres</h4>
+              <p>{genres.join(", ")}</p>
+            </React.Fragment>
+          )}
+          {title.romaji && (
+            <React.Fragment>
+              <h4>Romaji</h4>
+              <p>{title.romaji}</p>
+            </React.Fragment>
+          )}
+          {title.english && (
+            <React.Fragment>
+              <h4>English</h4>
+              <p>{title.english}</p>
+            </React.Fragment>
+          )}
+          {title.native && (
+            <React.Fragment>
+              <h4>Native</h4>
+              <p>{title.native}</p>
+            </React.Fragment>
+          )}
           {synonyms.length > 0 && (
             <React.Fragment>
               <h4>Synonyms</h4>

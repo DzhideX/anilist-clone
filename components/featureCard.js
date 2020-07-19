@@ -39,6 +39,12 @@ const FeatureCard = ({ image, title, description }) => (
         margin-top: 0rem;
         line-height: 146%;
       }
+
+      @media screen and (max-width: 900px) {
+        .landing__feature-card {
+          width: 35rem;
+        }
+      }
     `}</style>
   </>
 );

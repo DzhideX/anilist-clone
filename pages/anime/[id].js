@@ -3,30 +3,14 @@ import Layout from "../../components/layout";
 import Sidebar from "../../components/anime/sidebar";
 import Overview from "../../components/anime/overview";
 import AnimeHeader from "../../components/anime/animeHeader";
+import refactorAnimeData from "../../lib/refactorAnimeData";
 
 export async function getServerSideProps({ query }) {
   const animeInfo = await animeQuery(query.id);
-  let newDesc = "";
-  let studios = [];
-  let producers = [];
-  animeInfo.data.Media.description.split("<br />").forEach((part, i) => {
-    if (i % 2 === 0) {
-      newDesc += `<p>${part}<p/>`;
-    }
-  });
-  animeInfo.data.Media.description = newDesc;
-  animeInfo.data.Media.studios.edges.map((studio) => {
-    if (studio.node.isAnimationStudio) {
-      studios.push(studio.node.name);
-    } else {
-      producers.push(studio.node.name);
-    }
-  });
+  const animeData = refactorAnimeData(animeInfo);
   return {
     props: {
-      data: animeInfo.data.Media,
-      studios,
-      producers,
+      ...animeData,
     },
   };
 }

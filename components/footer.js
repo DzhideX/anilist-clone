@@ -127,6 +127,68 @@ const Footer = () => (
       .footer__center__right__column a:hover {
         color: #105f8a;
       }
+
+      @media screen and (max-width: 1500px) {
+        .footer__center {
+          width: 70rem;
+        }
+      }
+
+      @media screen and (max-width: 1160px) {
+        .footer__center__left {
+          width: 25%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .footer__center__left h3 {
+          margin-left: -1rem;
+        }
+
+        .footer__center__left__switches {
+          width: 8rem;
+        }
+
+        .footer__center__right {
+          width: 75%;
+        }
+      }
+
+      @media screen and (max-width: 1050px) {
+        .footer {
+          height: 100%;
+          padding-bottom: 1rem;
+        }
+        .footer__center {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .footer__center__right {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .footer__center__left {
+          width: 100%;
+          align-items: flex-start;
+          padding-left: 1rem;
+        }
+
+        .footer__center__left h3 {
+          margin-left: 1rem;
+        }
+
+        .footer__center__right__column {
+          padding-top: 1.5rem;
+          padding-left: 1.8rem;
+        }
+
+        .footer__center__right__column a {
+          margin-top: 0.5rem;
+        }
+      }
     `}</style>
   </>
 );
