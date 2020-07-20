@@ -160,6 +160,31 @@ const Overview = ({
         width: 32.6rem;
         border: none;
         border-radius: 0.2rem;
+        margin-bottom: 1rem;
+      }
+
+      @media screen and (max-width: 1150px) {
+        .overview__streaming-episodes {
+          grid-template-columns: 1fr 1fr;
+          grid-row-gap: 1rem;
+        }
+
+        .overview__data-distribution {
+          grid-template-columns: 1fr;
+        }
+
+        .overview__streaming-episodes__container {
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .overview {
+          width: 20rem;
+        }
+
+        .overview__trailer {
+          width: 20rem;
+        }
       }
     `}</style>
   </>

@@ -160,8 +160,46 @@ const Landing = () => (
         .landing__feature-cards {
           width: 30rem;
         }
-        .landing__feature-card {
-          width: 30rem;
+      }
+
+      @media screen and (max-width: 500px) {
+        h1 {
+          text-align: center;
+          width: 20rem;
+          font-size: 1.5rem;
+        }
+        h2 {
+          width: 20rem;
+          font-size: 1rem;
+          margin-bottom: 2rem;
+          margin-top: 2rem;
+        }
+        .landing__feature-cards {
+          width: 20rem;
+          align-items: center;
+        }
+
+        .landing__button {
+          min-height: 2rem;
+          height: 2.3rem;
+          width: 8rem;
+          margin-top: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .landing__button p {
+          font-size: 0.9rem;
+          margin: 0rem 1rem;
+        }
+
+        .landing__button__circle {
+          height: 1.5rem;
+          width: 1.5rem;
+          margin-right: 0.5rem;
+        }
+
+        .landing__button__circle__arrow {
+          height: 0.85rem;
         }
       }
     `}</style>

@@ -55,7 +55,7 @@ const Recommendations = ({ recommendations }) => {
       <style jsx>{`
         .recommendations {
           width: 100%;
-          margin-top: 1.5rem;
+          margin-top: 1rem;
         }
 
         .recommendations__info {

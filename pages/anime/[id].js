@@ -23,7 +23,7 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
           <AnimeHeader data={data} />
           <div className="anime__content">
             <Sidebar
-              title={data.title}
+              title={data?.title}
               format={data.format}
               episodes={data.episodes}
               episodeDuration={data.duration}
@@ -73,6 +73,38 @@ const AnimeInfoPage = ({ data, studios, producers }) => {
           position: relative;
           width: 89rem;
           max-width: 87rem;
+        }
+
+        @media screen and (max-width: 1350px) {
+          .anime__content {
+            width: 70rem;
+          }
+        }
+
+        @media screen and (max-width: 1150px) {
+          .anime__content {
+            width: 50rem;
+            justify-content: center;
+          }
+        }
+
+        @media screen and (max-width: 1000px) {
+          .anime__content {
+            width: 40rem;
+          }
+        }
+
+        @media screen and (max-width: 750px) {
+          .anime__content {
+            width: 30rem;
+            grid-template-columns: 1fr;
+          }
+        }
+
+        @media screen and (max-width: 500px) {
+          .anime__content {
+            width: 20rem;
+          }
         }
       `}</style>
     </>

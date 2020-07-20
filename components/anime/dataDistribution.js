@@ -235,6 +235,20 @@ const DataDistribution = ({ distribution }) => {
           height: 100%;
           background-color: rgb(232, 93, 117);
         }
+
+        @media screen and (max-width: 500px) {
+          .overview {
+            width: 20rem;
+          }
+
+          .data-distribution__text div:nth-of-type(5) {
+            display: none;
+          }
+
+          .data-distribution__text div:nth-of-type(4) {
+            display: none;
+          }
+        }
       `}</style>
     </>
   );

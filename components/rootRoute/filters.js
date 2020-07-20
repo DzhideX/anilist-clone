@@ -78,6 +78,17 @@ const Filters = ({}) => {
             margin: 0 auto 1rem auto;
           }
         }
+
+        @media screen and (max-width: 500px) {
+          .filters {
+            width: 20rem;
+            padding: 0 1rem;
+          }
+
+          .filters__settings {
+            display: none;
+          }
+        }
       `}</style>
     </>
   );

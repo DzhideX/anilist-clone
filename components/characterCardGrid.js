@@ -137,6 +137,18 @@ const CharacterCardGrid = (props) => (
         grid-template-columns: repeat(3, 1fr);
         margin-bottom: 1rem;
       }
+
+      @media screen and (max-width: 1350px) {
+        .character-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media screen and (max-width: 1150px) {
+        .character-grid {
+          grid-template-columns: 1fr;
+        }
+      }
     `}</style>
   </>
 );

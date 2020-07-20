@@ -206,7 +206,6 @@ const AnimeHeader = ({ data }) => (
         font-weight: 400;
         font-size: 0.96rem;
         line-height: 1.4;
-        font-smoothing: antialiased;
         letter-spacing: 0;
       }
 
@@ -225,11 +224,125 @@ const AnimeHeader = ({ data }) => (
         color: rgb(92, 114, 138);
         cursor: pointer;
         font-size: 0.9rem;
-        font-smoothing: antialiased;
       }
 
       .anime__header__info__middle__right__description__nav p:hover {
         color: rgb(61, 180, 242);
+      }
+
+      @media screen and (max-width: 1350px) {
+        .anime__header__info__middle {
+          width: 100%;
+          grid-template-columns: 12.5rem 50rem;
+          justify-content: center;
+        }
+
+        .anime__header__info__middle__right__description__nav p {
+          margin-right: 1rem;
+          font-size: 0.87rem;
+        }
+        .anime__header__info__middle__right__description__nav {
+          justify-content: space-evenly;
+        }
+      }
+
+      @media screen and (max-width: 1160px) {
+        .anime__header--no-banner {
+          margin-top: 0;
+        }
+      }
+
+      @media screen and (max-width: 1000px) {
+        .anime__header__info__middle {
+          grid-template-columns: 12.5rem 27.5rem;
+        }
+
+        .anime__header__info__middle__right__description__data {
+          max-width: 40rem;
+        }
+
+        .anime__header__info__middle__right h2 {
+          max-width: 40rem;
+        }
+
+        .anime__header__info__middle__right__description__nav p {
+          margin-right: 0.8rem;
+          font-size: 0.87rem;
+        }
+      }
+
+      @media screen and (max-width: 750px) {
+        .anime__header__info__middle {
+          grid-template-columns: 1fr;
+        }
+
+        .anime__header__info__middle__left {
+          display: flex;
+          justify-content: space-evenly;
+        }
+
+        .anime__header__info__middle__left > img {
+          width: 6.25rem;
+          height: 9.375rem;
+          ${data.bannerImage ? "margin-top: -6rem;" : "margin-top:1rem;"}
+        }
+
+        .anime__header__info__middle__left__actions {
+          width: 73%;
+          display: flex;
+          justify-content: space-evenly;
+        }
+
+        .anime__header__info__middle__left__actions__add {
+          width: 85%;
+        }
+
+        .anime__header__banner {
+          height: 15rem;
+        }
+
+        .anime__header__info__middle__right {
+          padding: 0 1rem;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .anime__header__info__middle__right__description div:nth-of-type(1) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .anime__header__info__middle__right__description__data {
+          max-width: 20rem;
+        }
+
+        .anime__header__info__middle__right__description__data p {
+          margin: 0;
+        }
+
+        .anime__header__info__middle__right h2 {
+          max-width: 20rem;
+          text-align: center;
+        }
+
+        .anime__header__info__middle__right__description__nav {
+          overflow-x: scroll;
+          width: 20rem;
+          padding-left: 2rem;
+        }
+
+        .anime__header__info__middle__right__description__nav p {
+          margin-left: 1rem;
+        }
+
+        .anime__header__info__middle__left__actions__add {
+          width: 75%;
+        }
+
+        .anime__header__info__middle__left__actions {
+          width: 50%;
+        }
       }
     `}</style>
   </>

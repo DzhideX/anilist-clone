@@ -225,7 +225,6 @@ const MediaCard = ({
           .picture-card img {
             height: 70%;
             width: 100%;
-            border-radius: 0.2rem;
           }
 
           .picture-card div {
@@ -233,6 +232,22 @@ const MediaCard = ({
             display: flex;
             width: 100%;
             color: #748899;
+          }
+        }
+
+        @media screen and (max-width: 500px) {
+          .picture-card {
+            height: 16rem;
+          }
+
+          .picture-card img {
+            height: 80%;
+            width: 75%;
+          }
+
+          .picture-card div {
+            display: grid;
+            place-items: center;
           }
         }
       `}</style>

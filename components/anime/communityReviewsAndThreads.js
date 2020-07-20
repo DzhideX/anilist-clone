@@ -92,6 +92,23 @@ const CommunityReviewsAndThreads = ({ reviews }) => (
         height: 0.8rem;
         width: 0.8rem;
       }
+
+      @media screen and (max-width: 1350px) {
+        .community {
+          display: flex;
+          justify-content: center;
+        }
+
+        .community__reviews__item__textbox__votes {
+          margin-left: 19rem;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .community__reviews__item__textbox__votes {
+          margin-left: 12rem;
+        }
+      }
     `}</style>
   </>
 );

@@ -40,33 +40,33 @@ const Sidebar = ({
         </div>
         <div className="sidebar__data">
           {format && (
-            <React.Fragment>
+            <div>
               <h4>Format</h4>
               <p>{format}</p>
-            </React.Fragment>
+            </div>
           )}
           {episodes && (
-            <React.Fragment>
+            <div>
               <h4>Episodes</h4>
               <p>{episodes}</p>
-            </React.Fragment>
+            </div>
           )}
           {episodeDuration && (
-            <React.Fragment>
+            <div>
               <h4>Episode Duration</h4>
               <p>{episodeDuration} minutes</p>
-            </React.Fragment>
+            </div>
           )}
           {status && (
-            <React.Fragment>
+            <div>
               <h4>Status</h4>
               <p className="capitalize">
                 {status.split("_").join(" ").toLowerCase()}
               </p>
-            </React.Fragment>
+            </div>
           )}
           {startDate.year && startDate.month && startDate.day && (
-            <React.Fragment>
+            <div>
               <h4>Start Date</h4>
               <p>
                 {new Date(startDate.year, startDate.month - 1, startDate.day)
@@ -75,10 +75,10 @@ const Sidebar = ({
                   .map((num, i) => (i === 0 ? "" : i === 2 ? `${num},` : num))
                   .join(" ")}
               </p>
-            </React.Fragment>
+            </div>
           )}
           {endDate.year && endDate.month && endDate.day && (
-            <React.Fragment>
+            <div>
               <h4>End Date</h4>
               <p>
                 {new Date(endDate.year, endDate.month - 1, endDate.day)
@@ -87,93 +87,93 @@ const Sidebar = ({
                   .map((num, i) => (i === 0 ? "" : i === 2 ? `${num},` : num))
                   .join(" ")}
               </p>
-            </React.Fragment>
+            </div>
           )}
           {season && (
-            <React.Fragment>
+            <div>
               <h4>Season</h4>
               <p className="capitalize">
                 {season.toLowerCase() + " " + seasonYear}
               </p>
-            </React.Fragment>
+            </div>
           )}
           {averageScore && (
-            <React.Fragment>
+            <di>
               <h4>Average Score</h4>
               <p>{averageScore}%</p>
-            </React.Fragment>
+            </di>
           )}
           {meanScore && (
-            <React.Fragment>
+            <div>
               <h4>Mean Score</h4>
               <p>{meanScore}%</p>
-            </React.Fragment>
+            </div>
           )}
           {popularity && (
-            <React.Fragment>
+            <div>
               <h4>Popularity</h4>
               <p>{popularity}</p>
-            </React.Fragment>
+            </div>
           )}
           {favourites && (
-            <React.Fragment>
+            <div>
               <h4>Favorites</h4>
               <p>{favourites}</p>
-            </React.Fragment>
+            </div>
           )}
           {studios && (
-            <React.Fragment>
+            <div>
               <h4>Studios</h4>
               <p>{studios.join(", ")}</p>
-            </React.Fragment>
+            </div>
           )}
           {producers && (
-            <React.Fragment>
+            <div>
               <h4>Producers</h4>
               <p>{producers.join(", ")}</p>
-            </React.Fragment>
+            </div>
           )}
           {source && (
-            <React.Fragment>
+            <div>
               <h4>Source</h4>
               <p>{source}</p>
-            </React.Fragment>
+            </div>
           )}
           {hashtag && (
-            <React.Fragment>
+            <div>
               <h4>Hashtag</h4>
               <p>{hashtag}</p>
-            </React.Fragment>
+            </div>
           )}
           {genres && (
-            <React.Fragment>
+            <div>
               <h4>Genres</h4>
               <p>{genres.join(", ")}</p>
-            </React.Fragment>
+            </div>
           )}
           {title.romaji && (
-            <React.Fragment>
+            <div>
               <h4>Romaji</h4>
               <p>{title.romaji}</p>
-            </React.Fragment>
+            </div>
           )}
           {title.english && (
-            <React.Fragment>
+            <div>
               <h4>English</h4>
               <p>{title.english}</p>
-            </React.Fragment>
+            </div>
           )}
           {title.native && (
-            <React.Fragment>
+            <div>
               <h4>Native</h4>
               <p>{title.native}</p>
-            </React.Fragment>
+            </div>
           )}
           {synonyms.length > 0 && (
-            <React.Fragment>
+            <div>
               <h4>Synonyms</h4>
               <p>{synonyms.join(", ")}</p>
-            </React.Fragment>
+            </div>
           )}
         </div>
         {tags.length > 0 && (
@@ -349,6 +349,43 @@ const Sidebar = ({
 
         .sidebar__links a:nth-child(5n + 5) {
           background-color: rgb(232, 93, 117);
+        }
+
+        @media screen and (max-width: 750px) {
+          .sidebar__rating {
+            display: none;
+          }
+
+          .sidebar__tags {
+            display: none;
+          }
+
+          .sidebar__links {
+            display: none;
+          }
+
+          .sidebar__data {
+            display: flex;
+            max-width: 30rem;
+            max-height: 7rem;
+            flex-direction: row;
+            overflow-x: scroll;
+            padding: 1rem 1rem 0;
+          }
+
+          .sidebar__data div {
+            margin-right: 1.5rem;
+          }
+        }
+
+        @media screen and (max-width: 500px) {
+          .sidebar {
+            display: flex;
+            justify-content: center;
+          }
+          .sidebar__data {
+            max-width: 20rem;
+          }
         }
       `}</style>
     </>

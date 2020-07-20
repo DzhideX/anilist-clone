@@ -58,6 +58,12 @@ const PreviewCardGrid = ({ relations }) => (
         margin: 0.4rem 0 1.3rem 0;
         grid-gap: 1rem 1.65rem;
       }
+
+      @media screen and (max-width: 1000px) {
+        .preview-card-grid {
+          grid-gap: 1rem 0.875rem;
+        }
+      }
     `}</style>
   </>
 );

@@ -162,6 +162,16 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
             margin: 0 auto 1rem auto;
           }
         }
+
+        @media screen and (max-width: 500px) {
+          .media-card-list {
+            width: 20rem;
+          }
+
+          .media-card-list__info h3 {
+            font-size: 1rem;
+          }
+        }
       `}</style>
     </>
   );

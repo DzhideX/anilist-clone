@@ -50,6 +50,28 @@ const FeatureCard = ({ image, title, description }) => (
           width: 30rem;
         }
       }
+
+      @media screen and (max-width: 500px) {
+        .landing__feature-card {
+          width: 18rem;
+        }
+
+        .landing__feature-card img {
+          height: 3rem;
+        }
+
+        .landing__feature-card__info {
+          margin-left: 1rem;
+        }
+
+        .landing__feature-card__info h3 {
+          font-size: 1rem;
+        }
+
+        .landing__feature-card__info p {
+          font-size: 0.7rem;
+        }
+      }
     `}</style>
   </>
 );

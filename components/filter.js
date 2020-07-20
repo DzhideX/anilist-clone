@@ -96,6 +96,12 @@ const Filter = ({ title, search }) => (
           width: 100%;
         }
       }
+
+      @media screen and (max-width: 500px) {
+        .filter {
+          margin-left: 0;
+        }
+      }
     `}</style>
   </>
 );
