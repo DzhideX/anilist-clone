@@ -44,48 +44,7 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
                 )
             )}
         </div>
-        {width < 950 ? (
-          <div className="media-card-list__picture">
-            {typeOfCard === "info" &&
-              data.map(
-                (
-                  {
-                    coverImage,
-                    title,
-                    genres,
-                    meanScore,
-                    popularity,
-                    format,
-                    episodes,
-                    season,
-                    seasonYear,
-                    status,
-                    id,
-                  },
-                  i
-                ) =>
-                  i < 4 && (
-                    <MediaCard
-                      typeOfCard="picture"
-                      rank={i + 1}
-                      image={coverImage.large}
-                      title={title.romaji}
-                      genres={genres}
-                      score={meanScore}
-                      users={popularity}
-                      type={format}
-                      episodes={episodes}
-                      releaseDate={season + ` ${seasonYear}`}
-                      status={status}
-                      color={coverImage.color}
-                      key={id}
-                      id={id}
-                    />
-                  )
-              )}
-          </div>
-        ) : (
-          typeOfCard === "info" &&
+        {typeOfCard === "info" &&
           data.map(
             (
               {
@@ -120,8 +79,7 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
                 id={id}
               />
             )
-          )
-        )}
+          )}
       </div>
       <style jsx>{`
         .media-card-list {
@@ -188,6 +146,20 @@ const MediaCardList = ({ data, typeOfCard, infoTitle }) => {
           }
           .media-card-list__picture {
             grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+          }
+        }
+
+        @media screen and (max-width: 800px) {
+          .media-card-list {
+            width: 41.5rem;
+            margin: 0 auto 1rem auto;
+          }
+        }
+
+        @media screen and (max-width: 650px) {
+          .media-card-list {
+            width: 31.5rem;
+            margin: 0 auto 1rem auto;
           }
         }
       `}</style>

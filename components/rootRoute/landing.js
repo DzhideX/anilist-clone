@@ -151,6 +151,19 @@ const Landing = () => (
           flex-direction: column;
         }
       }
+
+      @media screen and (max-width: 650px) {
+        h1 {
+          text-align: center;
+          width: 31.5rem;
+        }
+        .landing__feature-cards {
+          width: 30rem;
+        }
+        .landing__feature-card {
+          width: 30rem;
+        }
+      }
     `}</style>
   </>
 );

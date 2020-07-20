@@ -64,6 +64,20 @@ const Filters = ({}) => {
             width: 51.5rem;
           }
         }
+
+        @media screen and (max-width: 800px) {
+          .filters {
+            width: 41.5rem;
+            margin: 0 auto 1rem auto;
+          }
+        }
+
+        @media screen and (max-width: 650px) {
+          .filters {
+            width: 31.5rem;
+            margin: 0 auto 1rem auto;
+          }
+        }
       `}</style>
     </>
   );

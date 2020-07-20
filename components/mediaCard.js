@@ -21,11 +21,11 @@ const MediaCard = ({
   return (
     <>
       <div
-        onClick={() => router.push(`/anime/${id}`)}
         className={`${typeOfCard}-card`}
+        onClick={() => router.push(`/anime/${id}`)}
       >
         {typeOfCard === "info" && (
-          <>
+          <React.Fragment>
             {" "}
             <div className="info-card__rank">
               <h2>
@@ -61,10 +61,10 @@ const MediaCard = ({
                 </div>
               </div>
             </div>
-          </>
+          </React.Fragment>
         )}
         {typeOfCard === "picture" && (
-          <>
+          <React.Fragment>
             <img src={image} />
             <div>
               <p>
@@ -73,7 +73,7 @@ const MediaCard = ({
                   : title.substring(0, title.lastIndexOf(" ", 40)) + "..."}
               </p>
             </div>
-          </>
+          </React.Fragment>
         )}
       </div>
       <style jsx>{`
